@@ -1,0 +1,15 @@
+<div class="container" [style.border-color]="color">
+    <div class="card">
+        <img [src]="cardImg">
+    </div>
+    <div class="players">
+        @for(player of players; track player.id) {
+            @if(cardNumber === player.position){
+                <app-player
+                [player]="player.id"
+                [color]="player.color"
+                ></app-player>
+            }
+        }
+    </div>
+</div>

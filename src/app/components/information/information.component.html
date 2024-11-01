@@ -1,0 +1,18 @@
+@if(close) {
+    <div class="container">
+        <div class="content" [style.background-color]="color">
+            <h1>Você tirou: {{ card }}</h1>
+            <p>{{ description }}</p>
+            @if(options){
+                <div class="players">
+                    @for(opts of optionsValid; track optionsValid) {
+                        @if(opts !== 0){
+                            {{ opts }}: <input type="checkbox" name="option" [id]="opts" [checked]="selected === opts" (change)="selectOption(opts)">
+                        }
+                    }
+                </div>
+            }
+            <button (click)="closePopup()">Ok!</button>
+        </div>
+    </div>
+}

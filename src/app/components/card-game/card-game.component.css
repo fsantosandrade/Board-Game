@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border: 10px solid white;
+    border-radius: 20px;
+
+    & .card {
+        position: absolute;
+        z-index: 1;
+
+        & img {
+            width: 80px;
+        }
+    }
+
+    & .players {
+        width: 150px;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+    }
+}

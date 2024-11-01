@@ -1,0 +1,60 @@
+
+    @if(diceFaces[0]) {
+    <div class="first-face" (click)="rollDice()">
+        <span class="pip"></span>
+    </div>
+    }
+  @if(diceFaces[1]) {
+      <div class="second-face" (click)="rollDice()">
+        <span class="pip"></span>
+        <span class="pip"></span>
+      </div>
+  }
+  @if(diceFaces[2]) {
+      <div class="third-face" (click)="rollDice()">
+        <span class="pip"></span>
+        <span class="pip"></span>
+        <span class="pip"></span>
+      </div>
+  }
+  @if(diceFaces[3]) {
+      <div class="fourth-face" (click)="rollDice()">
+        <div class="column">
+          <span class="pip"></span>
+          <span class="pip"></span>
+        </div>
+        <div class="column">
+          <span class="pip"></span>
+          <span class="pip"></span>
+        </div>
+      </div>
+  }
+  @if(diceFaces[4]) {
+      <div class="fifth-face" (click)="rollDice()">
+        <div class="column">
+          <span class="pip"></span>
+          <span class="pip"></span>
+        </div>
+        <div class="column">
+          <span class="pip"></span>
+        </div>
+        <div class="column">
+          <span class="pip"></span>
+          <span class="pip"></span>
+        </div>
+      </div>
+  }
+  @if(diceFaces[5]) {
+      <div class="sixth-face" (click)="rollDice()">
+        <div class="column">
+          <span class="pip"></span>
+          <span class="pip"></span>
+          <span class="pip"></span>
+        </div>
+        <div class="column">
+          <span class="pip"></span>
+          <span class="pip"></span>
+          <span class="pip"></span>
+        </div>
+      </div>
+  }
