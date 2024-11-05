@@ -18,6 +18,7 @@ export class DiceComponent {
   rollDice() {
     if(!this.canRoll) return
 
+    this.diceSound()
     let currentFace = 0;
 
     this.interval = setInterval(() => {
@@ -43,5 +44,10 @@ export class DiceComponent {
     this.diceFaces[randomRoll] = true;
 
     this.diceRolled.emit(randomRoll + 1)
+  }
+
+  private diceSound() {
+    const dice = new Audio('sounds/dice.mp3')
+    dice.play()
   }
 }

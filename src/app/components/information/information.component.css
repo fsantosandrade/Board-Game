@@ -30,12 +30,45 @@
             font-weight: 600;
         }
 
-        & .players > button {
-            margin: 10px 5px;
-            padding: 5px 10px;
-            border-radius: 15px;
-            transition: .3s ease;
-            cursor: pointer;
+        & .players{
+            display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                margin: 10px 0;
+        
+            & .cont {
+                display: flex;
+                flex-flow: row;
+                width: 25px;
+                gap: 8px;
+                cursor: pointer;
+
+                & input {
+                    display: none;
+                }
+
+                & svg {
+                    overflow: visible;
+                }
+
+                & input:checked ~ svg .path {
+                    stroke-dasharray: 70.5096664428711 9999999;
+                    stroke-dashoffset: -262.2723388671875;
+                }
+            }
         }
     }
 }
+
+.path {
+    fill: none;
+    stroke: white;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
+  }

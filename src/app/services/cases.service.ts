@@ -7,20 +7,14 @@ import { Case } from '../../../public/types/caseType';
 })
 export class CasesService {
   cases: Case[] = cases
-  maxLucky:number = 11
-  maxBad:number = 6
-  maxCoringa:number = 6
-  lucky:number = 0
-  bad:number = 0
-  coringa:number = 0
 
   constructor() { }
 
   atributionTypes(): Case[] {
     const predefinedTypes = [
-      ...Array(11).fill(2), // 11 elementos com o tipo 2
-      ...Array(6).fill(3), // 6 elementos com o tipo 3
-      ...Array(6).fill(4) // 6 elementos com o tipo 4
+      ...Array(10).fill(2), // 11 elementos com o tipo sorte
+      ...Array(5).fill(3), // 6 elementos com o tipo azar
+      ...Array(6).fill(4) // 6 elementos com o tipo coringa
     ];
   
     // Embaralha a lista de tipos para distribuir aleatoriamente
@@ -64,7 +58,7 @@ export class CasesService {
         break;
 
       case 4: 
-        card.color = '#FAC556'
+        card.color = '#E7A720'
         card.img = 'imgs/coringa.png'
         card.title = "ALEATÓRIA"
         card.description = "..."

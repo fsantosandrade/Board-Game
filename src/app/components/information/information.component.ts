@@ -17,8 +17,10 @@ export class InformationComponent {
   @Output() closeEvent = new EventEmitter<void>();
 
   closePopup() {
+    this.clickSound()
     this.close = false
     this.optionSelected.emit(this.selected);
+    this.selected = undefined
     this.closeEvent.emit()
   }
 
@@ -27,7 +29,13 @@ export class InformationComponent {
   @Input() options:boolean = false
 
   selectOption(option: number) {
+    this.clickSound()
     // Marca o checkbox selecionado e desmarca os outros
     this.selected = this.selected === option ? undefined : option;
+  }
+
+  private clickSound() {
+    const click = new Audio('sounds/click.mp3')
+    click.play()
   }
 }

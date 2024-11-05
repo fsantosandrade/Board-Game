@@ -22,7 +22,5 @@ export const cases: Case[] = [
         { "img": "", "color": "", "type": 0, "position": 19, "description": "", "title": "" },
         { "img": "", "color": "", "type": 0, "position": 20, "description": "", "title": "" },
         { "img": "", "color": "", "type": 0, "position": 21, "description": "", "title": "" },
-        { "img": "", "color": "", "type": 0, "position": 22, "description": "", "title": "" },
-        { "img": "", "color": "", "type": 0, "position": 23, "description": "", "title": "" },
-        { "img": "", "color": "", "type": 0, "position": 24, "description": "", "title": "" }
+        { "img": "", "color": "", "type": 0, "position": 22, "description": "", "title": "" }
       ];
