@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { CardGameComponent } from '../../components/card-game/card-game.component';
 import { Case } from '../../../../public/types/caseType';
 import { Player } from '../../../../public/types/playerType';
@@ -20,7 +20,9 @@ export class GameComponent implements OnInit {
   casas:Case[] = []
   turns:boolean[] = [true, false, false, false]
   turnoAtual:number = 0
-  players: Player[] = [{id:1, color:'red', position: 0, points: 99, laps: 1}, {id:2, color:'purple', position: 0, points: 99, laps: 1}, {id:3, color:'yellow', position: 0, points: 99, laps: 1}, {id:4, color:'orange', position: 0, points: 99, laps: 1}]
+  qtdPlayers:number = 2
+  PlayersColors:string[] = ['red', 'purple', 'yellow', 'orange']
+  players: Player[] = []
   playerSelectedOnRandowCard:number | undefined = 0
 
   //Popup propriedades
@@ -36,10 +38,22 @@ export class GameComponent implements OnInit {
 
   constructor(
     private caseService: CasesService, 
-    private router: Router){}
+    private router: Router,
+    private numPlrs: ActivatedRoute ){}
 
   ngOnInit(): void {
     this.casas = this.caseService.atributionTypes()
+    this.numPlrs.queryParams.subscribe(p => {
+      this.qtdPlayers = p['qtdPlayers']
+    })
+    this.players = Array.from({length: this.qtdPlayers}, (_, i) => ({
+      id: i + 1,
+      color: this.PlayersColors[i],
+      position: 0,
+      points: 0,
+      laps: 1
+    }))
+    
     this.players.forEach(p => {
       p.position = 1
     })
@@ -94,19 +108,19 @@ export class GameComponent implements OnInit {
 
         switch(cartaCoringa) {
           case 1:
-            this.descriptionPopup = `Escolha alguem para voltar ${Math.ceil(points / 2)} casas!`
+            this.descriptionPopup = this.moreThanTwoPlayers() ? `Escolha alguem para voltar ${Math.ceil(points / 2)} casas!` : `O outro jogador voltou ${Math.ceil(points / 2)} casas!`
 
             this.attPoints(playerAtual, points, 'coringa', 1)
             break;
 
           case 2:
-            this.descriptionPopup = `Escolha um jogador e roube metade dos seus pontos!`
+            this.descriptionPopup = this.moreThanTwoPlayers() ? `Escolha um jogador e roube metade dos seus pontos!` : `Você roubou metade dos pontos do outro jogador!`
 
             this.attPoints(playerAtual, points, 'coringa', 2)
             break; 
 
           case 3:
-            this.descriptionPopup = `Troque de lugar com alguém obrigatoriamente!`
+            this.descriptionPopup = this.moreThanTwoPlayers() ? `Troque de lugar com alguém obrigatoriamente!` : `Você trocou obrigadoriamente de lugar com o outro jogador!`
 
             this.attPoints(playerAtual, points, 'coringa', 3)
             break;
@@ -130,7 +144,7 @@ export class GameComponent implements OnInit {
   }
 
   advanceTurn() {
-    if (this.turnoAtual === 3) {
+    if (this.turnoAtual === this.players.length - 1) {
       this.turnoAtual = 0;
     } else {
       this.turnoAtual++;
@@ -148,10 +162,16 @@ export class GameComponent implements OnInit {
         playerAtual.points = 0
       }
     }else if(typeCard === 'coringa'){
-      this.optionsValid.length = 0
-      this.optionsValid = this.players.map(p => (p.id !== playerAtual.id ? p.id : 0)).filter(id => id !== 0); 
-      
-          this.optionsIsClosed = true
+      if(this.players.length > 2){
+        this.optionsValid.length = 0
+        this.optionsValid = this.players.map(p => (p.id !== playerAtual.id ? p.id : 0)).filter(id => id !== 0); 
+        
+            this.optionsIsClosed = true
+      }else {
+        setInterval(() => {
+          this.playerSelectedOnRandowCard = this.players.find(p => p.id !== playerAtual.id)?.id
+        }, 1000)
+      }
 
       switch(typeCoringa) {
         case 1:
@@ -194,6 +214,7 @@ export class GameComponent implements OnInit {
 
         case 4:
           this.optionsIsClosed = false
+          this.playerSelectedOnRandowCard = 0
 
           playerAtual.position -= Math.ceil(pontos / 2)
 
@@ -203,6 +224,10 @@ export class GameComponent implements OnInit {
           break
       }
     }
+  }
+
+  moreThanTwoPlayers(): boolean {
+    return this.players.length > 2 ? true : false
   }
 
   onOptionSelected(value: number | undefined) {
@@ -221,4 +246,6 @@ export class GameComponent implements OnInit {
         }, interval);
     });
   }
+
+  @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any): void { $event.returnValue = 'Tem certeza que deseja sair? Toda a corrida será reiniciada, junto aos pontos e posições das casas!'; }
 }

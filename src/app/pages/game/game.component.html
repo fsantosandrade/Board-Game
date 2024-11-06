@@ -15,38 +15,16 @@
     </div>
     <div class="rolls">
         <ul>
-            <li>
-                <span [style]="turns[0] ? { 'color': 'green', 'font-weight': 'bold' } : { 'color': 'black', 'font-weight': 'normal' }">Player 1</span>
-                <app-dice (diceRolled)="onRoll($event)" [canRoll]="turns[0]"></app-dice>
-                <span>Pontuação: {{ players[0].points }}</span>
-                @if(players[0].laps > 1){
-                    <span class="multiplicador">pontos x{{players[0].laps}}</span>
-                }
-            </li>
-            <li>
-                <span [style]="turns[1] ? { 'color': 'green', 'font-weight': 'bold' } : { 'color': 'black', 'font-weight': 'normal' }">Player 2</span>
-                <app-dice (diceRolled)="onRoll($event)" [canRoll]="turns[1]"></app-dice>
-                <span>Pontuação: {{ players[1].points }}</span>
-                @if(players[1].laps > 1){
-                    <span class="multiplicador">pontos x{{players[1].laps}}</span>
-                }
-            </li>
-            <li>
-                <span [style]="turns[2] ? { 'color': 'green', 'font-weight': 'bold' } : { 'color': 'black', 'font-weight': 'normal' }">Player 3</span>
-                <app-dice (diceRolled)="onRoll($event)" [canRoll]="turns[2]"></app-dice>
-                <span>Pontuação: {{ players[2].points }}</span>
-                @if(players[2].laps > 1){
-                    <span class="multiplicador">pontos x{{players[2].laps}}</span>
-                }
-            </li>
-            <li>
-                <span [style]="turns[3] ? { 'color': 'green', 'font-weight': 'bold' } : { 'color': 'black', 'font-weight': 'normal' }">Player 4</span>
-                <app-dice (diceRolled)="onRoll($event)" [canRoll]="turns[3]"></app-dice>
-                <span>Pontuação: {{ players[3].points }}</span>
-                @if(players[3].laps > 1){
-                    <span class="multiplicador">pontos x{{players[3].laps}}</span>
-                }
-            </li>
+            @for(player of players; track player.id){
+                <li>
+                    <span [style]="turns[player.id - 1] ? { 'color': 'green', 'font-weight': 'bold' } : { 'color': 'black', 'font-weight': 'normal' }">Player {{ player.id }}</span>
+                    <app-dice (diceRolled)="onRoll($event)" [canRoll]="turns[player.id - 1]"></app-dice>
+                    <span>Pontuação: {{ players[player.id - 1].points }}</span>
+                    @if(players[player.id - 1].laps > 1){
+                        <span class="multiplicador">pontos x{{players[player.id - 1].laps}}</span>
+                    }
+                </li>
+            }
         </ul>
     </div>
 </div>

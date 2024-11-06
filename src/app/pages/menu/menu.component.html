@@ -1,3 +1,64 @@
-<a routerLink="/board-game">
-    <p>menu works!</p>
-</a>
+<div class="container">
+    <audio src="sounds/menu.mp3" autoplay loop [volume]="0.2"></audio>
+    <div class="menu">
+        <h1>Travessia da Sorte</h1>
+        <div class="buttons">
+            <a (click)="openModal('players')" class="btn">Iniciar</a>
+            <a (click)="openModal('credits')" class="btn">Créditos</a>
+            <a (click)="openModal('rules')" class="btn">Regras</a>
+        </div>
+    </div>
+
+    <div class="modal" [class]="{'active': modalActive === 'players'}" id="players">
+        <div class="modal-content">
+            <h2>Quantidade de Jogadores</h2>
+            <form id="playerForm">
+                <label for="numPlayers">Selecione o número de jogadores (2 a 4): </label>
+                <input #numPlayersInput type="number" id="numPlayers" name="numPlayers" min="2" max="4" required>
+                <button (click)="iniciarJogo(numPlayersInput.value)" >COMEÇAR A CORRIDA</button>
+            </form>
+            <a (click)="closeModal()" class="close">Fechar</a>
+        </div>
+    </div>
+
+    <div class="modal" [class]="{'active': modalActive === 'credits'}" id="credits">
+        <div class="modal-content">
+            <h2>Créditos</h2>
+            <h3>Autores:</h3>
+            <ul>
+                <li>Felipe Santos</li>
+                <li>Adilson</li>
+                <li>Addan Reis</li>
+                <li>Vinicius de Almeida</li>
+            </ul>
+            <a (click)="closeModal()" class="close">Fechar</a>
+        </div>
+    </div>
+
+    <div class="modal" [class]="{'active': modalActive === 'rules'}" id="rules">
+        <div class="modal-content">
+            <h2>Regras do Jogo</h2>
+            <div class="card">
+                <img src="imgs/rules/chegada.png" alt="Linha de chegada">
+                <h3>Linha de chegada</h3>
+                <p>Sinaliza o inicio e o final do jogo. Quem conseguir 100 pontos primeiro será o vencedor! Cada vez que um jogador cruzar esta carta ele ganha um multiplicador de pontos.</p>
+            </div>
+            <div class="card">
+                <img src="imgs/rules/sorte.png" alt="Carta da sorte">
+                <h3>Carta da sorte</h3>
+                <p>Esta carta pode te dar de 1 a 6 pontos.</p>
+            </div>
+            <div class="card">
+                <img src="imgs/rules/ruim.png" alt="Carta do azar">
+                <h3>Carta do azar</h3>
+                <p>Esta carta pode te tirar de 1 a 3 pontos.</p>
+            </div>
+            <div class="card">
+                <img src="imgs/rules/misterio.png" alt="Carta mistério">
+                <h3>Carta mistério</h3>
+                <p>Esta carta te dará uma habilidade misteriosa para utilizar durante a partida.</p>
+            </div>
+            <a (click)="closeModal()" class="close">Fechar</a>
+        </div>
+    </div>
+</div>
