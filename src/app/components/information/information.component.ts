@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-information',
@@ -17,11 +17,23 @@ export class InformationComponent {
   @Output() closeEvent = new EventEmitter<void>();
 
   closePopup() {
-    this.clickSound()
-    this.close = false
-    this.optionSelected.emit(this.selected);
-    this.selected = undefined
-    this.closeEvent.emit()
+    if(this.options) {
+      if (this.selected !== undefined) {
+        this.clickSound();
+        this.close = false;
+        this.optionSelected.emit(this.selected);
+        this.selected = undefined;
+        this.closeEvent.emit();
+      } else {
+        alert("Selecione pelo menos uma opção para fechar o popup.");
+      }
+    }else {
+      this.clickSound();
+      this.close = false;
+      this.optionSelected.emit(this.selected);
+      this.selected = undefined;
+      this.closeEvent.emit();
+    }
   }
 
   @Output() optionSelected = new EventEmitter<number | undefined>();

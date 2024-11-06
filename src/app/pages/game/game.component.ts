@@ -162,6 +162,7 @@ export class GameComponent implements OnInit {
         playerAtual.points = 0
       }
     }else if(typeCard === 'coringa'){
+
       if(this.players.length > 2){
         this.optionsValid.length = 0
         this.optionsValid = this.players.map(p => (p.id !== playerAtual.id ? p.id : 0)).filter(id => id !== 0); 

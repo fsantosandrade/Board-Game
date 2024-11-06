@@ -8,7 +8,7 @@
     & .cards {
       display: grid;
       grid-template-columns: repeat(10, 1fr);
-      place-items: center;
+      place-items: left;
       border-radius: 80px;
       overflow: hidden;
       border: 10px solid #3F3F3F;
