@@ -12,9 +12,9 @@ export class CasesService {
 
   atributionTypes(): Case[] {
     const predefinedTypes = [
-      ...Array(0).fill(2), // 11 elementos com o tipo sorte
-      ...Array(0).fill(3), // 6 elementos com o tipo azar
-      ...Array(22).fill(4) // 6 elementos com o tipo coringa
+      ...Array(10).fill(2), // 11 elementos com o tipo sorte
+      ...Array(5).fill(3), // 6 elementos com o tipo azar
+      ...Array(6).fill(4) // 6 elementos com o tipo coringa
     ];
   
     // Embaralha a lista de tipos para distribuir aleatoriamente
