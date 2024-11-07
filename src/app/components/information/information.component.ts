@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-information',
   standalone: true,
-  imports: [],
+  imports: [ButtonComponent],
   templateUrl: './information.component.html',
   styleUrl: './information.component.css'
 })

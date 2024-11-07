@@ -15,10 +15,10 @@
             <form id="playerForm">
                 <label for="numPlayers">Selecione o número de jogadores (2 a 4): </label>
                 <input #numPlayersInput type="number" id="numPlayers" name="numPlayers" min="2" max="4" required>
-                <button (click)="iniciarJogo(numPlayersInput.value)" >COMEÇAR A CORRIDA</button>
+                <app-button (click)="iniciarJogo(numPlayersInput.value)" name="Começar a Corrida!" class="close"></app-button>
             </form>
-            <a (click)="closeModal()" class="close">Fechar</a>
-        </div>
+            <app-button name="Fechar" (click)="closeModal()" class="close"></app-button>
+        </div>  
     </div>
 
     <div class="modal" [class]="{'active': modalActive === 'credits'}" id="credits">
@@ -31,7 +31,7 @@
                 <li>Addan Reis</li>
                 <li>Vinicius de Almeida</li>
             </ul>
-            <a (click)="closeModal()" class="close">Fechar</a>
+            <app-button name="Fechar" (click)="closeModal()" class="close"></app-button>
         </div>
     </div>
 
@@ -58,7 +58,7 @@
                 <h3>Carta mistério</h3>
                 <p>Esta carta te dará uma habilidade misteriosa para utilizar durante a partida.</p>
             </div>
-            <a (click)="closeModal()" class="close">Fechar</a>
+            <app-button name="Fechar" (click)="closeModal()" class="close"></app-button>
         </div>
     </div>
 </div>
