@@ -17,6 +17,7 @@ export class DiceComponent {
 
   rollDice() {
     if(!this.canRoll) return
+    this.canRoll = false
 
     this.diceSound()
     let currentFace = 0;

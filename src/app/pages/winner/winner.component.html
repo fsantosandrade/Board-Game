@@ -1,10 +1,10 @@
 <div class="container">
-    <img src="imgs/confetti.gif" class="gif1" alt="confetti">
-    <div class="content">
-        <h1>PARABÉNS!</h1>
-        <p>Player {{ winnerId }} você é o vencedor</p>
-        <button routerLink="/menu">VOLTAR PARA O MENU</button>
-    </div>
-    <img src="imgs/confetti.gif" class="gif2" alt="confetti">
     <audio src="sounds/win.mp3" autoplay></audio>
+    <div class="content">
+        <div class="image"><img src="imgs/podium.png" alt=""></div>
+        <span class="p2">Player {{ segundo }}</span>
+        <span class="p1">Player {{ primeiro }}</span>
+        <span class="p3">Player {{ terceiro }}</span>
+    </div>
+    <app-button name="Voltar para o menu" routerLink="/menu"></app-button>
 </div>

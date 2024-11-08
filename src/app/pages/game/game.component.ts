@@ -65,6 +65,8 @@ export class GameComponent implements OnInit {
 
   async onRoll(value: number) {
     this.turns.fill(false)
+    console.log(this.turns);
+    
     
     this.players[this.turnoAtual].position += value
 
@@ -137,10 +139,6 @@ export class GameComponent implements OnInit {
         this.popupIsClosed = false; 
         break;
     }
-
-    if(playerAtual.points >= 100) {
-      this.router.navigate(['winner'], { queryParams: { winner: playerAtual.id }})
-    }
   }
 
   advanceTurn() {
@@ -203,11 +201,11 @@ export class GameComponent implements OnInit {
         case 3:
           await this.waitForVariableChange(() => this.playerSelectedOnRandowCard)
 
-          const locPlayer1 = this.players[this.playerSelectedOnRandowCard! - 1].position
+          const otherPlayer = this.players[this.playerSelectedOnRandowCard! - 1].position
 
           this.players[this.playerSelectedOnRandowCard! - 1].position = playerAtual.position
 
-          playerAtual.position = locPlayer1
+          playerAtual.position = otherPlayer
 
           this.playerSelectedOnRandowCard = 0
           this.optionsIsClosed = false
@@ -224,6 +222,14 @@ export class GameComponent implements OnInit {
           }
           break
       }
+    }
+
+    if(playerAtual.points >= 100) {
+      const rankedPlayers = this.players.sort((a, b) => b.points - a.points);
+
+      const [winner, second, third] = rankedPlayers
+
+      this.router.navigate(['winner'], { queryParams: { winner: winner.id, second: second.id, third: third.id }})
     }
   }
 

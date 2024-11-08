@@ -1,49 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
+
 .container {
-    height: 600px;
+    height: 100vh;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-
-    & .gif1 {
-        width: 250px;
-        transform: translateY(180px);
-    }
-
-    & .gif2 {
-        width: 250px;
-        transform: translateY(180px) rotateZ(270deg);
-    }
+    gap: 10px;
 
     & .content {
-        background-color: #06A888;
-        padding: 110px 220px;
-        border-radius: 15px;
-        color: white;
+        width: 600px;
+        height: 450px;
 
-        & button {
-            margin-top: 30px;
-            background-color: white;
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: .3s ease;
+        & .image {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
         }
 
-        & button:hover {
-            background-color: rgb(51, 51, 51);
-            color: white;
+        & span {
+            position: absolute;
+            z-index: 2;
+            font-weight: 600;
+            font-size: 1.3rem;
+            font-family: "Mystery Quest", system-ui;
+            color: #742D2C;
+        }
+
+        & .p2 {
+            left: 40.7%;
+            bottom: 31.5%;
+        }
+
+        & .p1 {
+            left: 47.8%;
+            bottom: 36.5%;
+            font-size: 1.6rem;
+        }
+
+        & .p3 {
+            left: 55.8%;
+            bottom: 29.8%;
+            font-size: 1.2rem;
         }
     }
-
-    & .content > h1 {
-        font-size: 2.5rem;
-        margin-bottom: 30px;
-    } 
-
-    & .content > p {
-        font-size: 1.5rem;
-        font-weight: 600;
-    }
-}
+  }
