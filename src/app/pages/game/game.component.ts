@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CardGameComponent } from '../../components/card-game/card-game.component';
 import { Case } from '../../../../public/types/caseType';
 import { Player } from '../../../../public/types/playerType';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [RouterOutlet, CardGameComponent, DiceComponent, InformationComponent],
+  imports: [ CardGameComponent, DiceComponent, InformationComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
 })
