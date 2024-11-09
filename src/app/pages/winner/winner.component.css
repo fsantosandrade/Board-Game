@@ -27,21 +27,24 @@
             font-size: 1.3rem;
             font-family: "Mystery Quest", system-ui;
             color: #742D2C;
+            width: 98px;
+            text-align: center;
+            overflow: hidden;
         }
 
         & .p2 {
-            left: 40.7%;
+            left: 39.8%;
             bottom: 31.5%;
         }
 
         & .p1 {
-            left: 47.8%;
+            left: 47.4%;
             bottom: 36.5%;
             font-size: 1.6rem;
         }
 
         & .p3 {
-            left: 55.8%;
+            left: 54.8%;
             bottom: 29.8%;
             font-size: 1.2rem;
         }

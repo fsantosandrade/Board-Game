@@ -14,7 +14,25 @@
             <h2>Quantidade de Jogadores</h2>
             <form id="playerForm">
                 <label for="numPlayers">Selecione o número de jogadores (2 a 4): </label>
-                <input #numPlayersInput type="number" id="numPlayers" name="numPlayers" min="2" max="4" required>
+                <input class="numPlrs" #numPlayersInput [(ngModel)]="numPlayers" (ngModelChange)="generatePlayerFields(numPlayers)" type="number" id="numPlayers" name="numPlayers" min="2" max="4" required>
+                <div class="names">
+                @for(playerName of playerNames; track playerNames) {
+                    <div class="input-container">
+                        <input
+                          [(ngModel)]="playerNames[$index]"
+                          (input)="soundInput()"
+                          class="input"
+                          name="text"
+                          type="text"
+                          required
+                          minlength="2"
+                          maxlength="9"
+                          placeholder="Nome do Jogador {{$index + 1}}"
+                        />
+                    </div>
+                }
+            </div>
+
                 <app-button (click)="iniciarJogo(numPlayersInput.value)" name="Começar a Corrida!" class="close"></app-button>
             </form>
             <app-button name="Fechar" (click)="closeModal()" class="close"></app-button>

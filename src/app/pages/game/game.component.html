@@ -17,7 +17,7 @@
         <ul>
             @for(player of players; track player.id){
                 <li>
-                    <span [style]="turns[player.id - 1] ? { 'color': 'green', 'font-weight': 'bold' } : { 'color': 'black', 'font-weight': 'normal' }">Player {{ player.id }}</span>
+                    <span [style]="turns[player.id - 1] ? { 'color': 'green', 'font-weight': 'bold' } : { 'color': 'black', 'font-weight': 'normal' }">{{ player.id }} - {{ player.name }}</span>
                     <app-dice (diceRolled)="onRoll($event)" [canRoll]="turns[player.id - 1]"></app-dice>
                     <span>Pontuação: {{ players[player.id - 1].points }}</span>
                     @if(players[player.id - 1].laps > 1){

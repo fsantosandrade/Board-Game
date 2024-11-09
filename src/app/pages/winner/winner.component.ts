@@ -10,9 +10,9 @@ import { ButtonComponent } from '../../components/button/button.component';
   styleUrl: './winner.component.css'
 })
 export class WinnerComponent implements OnInit {
-  segundo:number | null = null
-  primeiro:number | null = null
-  terceiro:number | null = null
+  segundo:string | null = null
+  primeiro:string | null = null
+  terceiro:string | null = null
 
   constructor( private route: ActivatedRoute ){}
 

@@ -22,6 +22,7 @@ export class GameComponent implements OnInit {
   turnoAtual:number = 0
   qtdPlayers:number = 2
   PlayersColors:string[] = ['red', 'purple', 'yellow', 'orange']
+  PlayersNames:string[] = []
   players: Player[] = []
   playerSelectedOnRandowCard:number | undefined = 0
 
@@ -45,9 +46,14 @@ export class GameComponent implements OnInit {
     this.casas = this.caseService.atributionTypes()
     this.numPlrs.queryParams.subscribe(p => {
       this.qtdPlayers = p['qtdPlayers']
+      this.PlayersNames[0] = p['nameP1']
+      this.PlayersNames[1] = p['nameP2']
+      this.PlayersNames[2] = p['nameP3']
+      this.PlayersNames[3] = p['nameP4']
     })
     this.players = Array.from({length: this.qtdPlayers}, (_, i) => ({
       id: i + 1,
+      name: this.PlayersNames[i],
       color: this.PlayersColors[i],
       position: 0,
       points: 0,
@@ -65,9 +71,7 @@ export class GameComponent implements OnInit {
 
   async onRoll(value: number) {
     this.turns.fill(false)
-    console.log(this.turns);
-    
-    
+
     this.players[this.turnoAtual].position += value
 
     if(this.players[this.turnoAtual].position > 22) {
@@ -160,21 +164,23 @@ export class GameComponent implements OnInit {
         playerAtual.points = 0
       }
     }else if(typeCard === 'coringa'){
-
-      if(this.players.length > 2){
+      const haveThreePlayerOrMore = this.players.length > 2
+      
+      if(haveThreePlayerOrMore){
         this.optionsValid.length = 0
         this.optionsValid = this.players.map(p => (p.id !== playerAtual.id ? p.id : 0)).filter(id => id !== 0); 
         
             this.optionsIsClosed = true
       }else {
-        setInterval(() => {
           this.playerSelectedOnRandowCard = this.players.find(p => p.id !== playerAtual.id)?.id
-        }, 1000)
+          console.log(this.playerSelectedOnRandowCard);
       }
 
       switch(typeCoringa) {
         case 1:
-          await this.waitForVariableChange(() => this.playerSelectedOnRandowCard)
+          if(haveThreePlayerOrMore) {
+            await this.waitForVariableChange(() => this.playerSelectedOnRandowCard)
+          } 
           
           this.players[this.playerSelectedOnRandowCard! - 1].position -= Math.floor(pontos / 2)
 
@@ -187,7 +193,9 @@ export class GameComponent implements OnInit {
           break
   
         case 2:
-          await this.waitForVariableChange(() => this.playerSelectedOnRandowCard)
+          if(haveThreePlayerOrMore) {
+            await this.waitForVariableChange(() => this.playerSelectedOnRandowCard)
+          } 
 
           const pointsDvd2 = Math.floor(this.players[this.playerSelectedOnRandowCard! - 1].points / 2)
 
@@ -199,7 +207,9 @@ export class GameComponent implements OnInit {
           break
   
         case 3:
-          await this.waitForVariableChange(() => this.playerSelectedOnRandowCard)
+          if(haveThreePlayerOrMore) {
+            await this.waitForVariableChange(() => this.playerSelectedOnRandowCard)
+          } 
 
           const otherPlayer = this.players[this.playerSelectedOnRandowCard! - 1].position
 
@@ -229,7 +239,7 @@ export class GameComponent implements OnInit {
 
       const [winner, second, third] = rankedPlayers
 
-      this.router.navigate(['winner'], { queryParams: { winner: winner.id, second: second.id, third: third.id }})
+      this.router.navigate(['winner'], { queryParams: { winner: winner.name, second: second.name, third: third?.name }})
     }
   }
 
