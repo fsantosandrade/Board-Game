@@ -26,7 +26,7 @@ export class MenuComponent {
     this.soundClick()
     const numPlrs = Number(numPlayers)
 
-    const validNames = this.playerNames.every(n => n.length > 2 && n.length < 10);
+    const validNames = this.playerNames.every(n => n.length >= 2 && n.length < 10);
 
     if(numPlrs >= 2 && numPlrs <= 4 && validNames){
       this.route.navigate(['board-game'], {queryParams: {

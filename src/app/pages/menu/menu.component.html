@@ -10,12 +10,15 @@
     </div>
 
     <div class="modal" [class]="{'active': modalActive === 'players'}" id="players">
-        <div class="modal-content">
+        <div class="modal-content mp">
             <h2>Quantidade de Jogadores</h2>
             <form id="playerForm">
                 <label for="numPlayers">Selecione o número de jogadores (2 a 4): </label>
                 <input class="numPlrs" #numPlayersInput [(ngModel)]="numPlayers" (ngModelChange)="generatePlayerFields(numPlayers)" type="number" id="numPlayers" name="numPlayers" min="2" max="4" required>
                 <div class="names">
+                @if(numPlayersInput.value !== "0" && numPlayersInput.value !== ""){
+                    <p id="minNamePlayer">(Min 2 letras)</p>
+                }    
                 @for(playerName of playerNames; track playerNames) {
                     <div class="input-container">
                         <input
@@ -40,7 +43,7 @@
     </div>
 
     <div class="modal" [class]="{'active': modalActive === 'credits'}" id="credits">
-        <div class="modal-content">
+        <div class="modal-content mc">
             <h2>Créditos</h2>
             <h3>Autores:</h3>
             <ul>
@@ -54,7 +57,7 @@
     </div>
 
     <div class="modal" [class]="{'active': modalActive === 'rules'}" id="rules">
-        <div class="modal-content">
+        <div class="modal-content mr">
             <h2>Regras do Jogo</h2>
             <div class="card">
                 <img src="imgs/rules/chegada.png" alt="Linha de chegada">

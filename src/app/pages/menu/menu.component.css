@@ -80,7 +80,6 @@ h1 {
 
 .modal-content {
     display: flex;
-    flex-flow: row wrap;
     justify-content: center;
     background-color: #34495e;
     margin: 15% auto;
@@ -99,13 +98,25 @@ h1 {
         border-radius: 10px;
         width: 50px;
         padding: 4px;
-        margin-bottom: 5px;
     }
 
     & ul {
         list-style: none;
         margin: 10px 0;
     }
+}
+
+.mp {
+  flex-flow: row wrap;
+}
+
+.mc, .mr {
+  flex-flow: column;
+}
+
+#minNamePlayer {
+  margin-bottom: 10px;
+  color: #cccbcb;
 }
 
 .close {
