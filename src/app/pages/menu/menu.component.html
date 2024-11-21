@@ -45,12 +45,13 @@
     <div class="modal" [class]="{'active': modalActive === 'credits'}" id="credits">
         <div class="modal-content mc">
             <h2>Créditos</h2>
+            <p>Este trabalho foi desenvolvido para a disciplina de Computabilidade e Complexidade na UDF, com o objetivo de aplicar conceitos de complexidade em um contexto prático. O projeto resultou no jogo "<b>Travessia da Sorte</b>", que explora mecânicas baseadas em sorte e estratégia, integrando aspectos computacionais para modelar e analisar a dinâmica do jogo. O repositório do projeto pode ser acessado no GitHub: <a href="https://github.com/fsantosandrade/Board-Game" target="_blank">https://github.com/fsantosandrade/Board-Game</a></p>
             <h3>Autores:</h3>
             <ul>
-                <li>Felipe Santos</li>
-                <li>Adilson</li>
-                <li>Addan Reis</li>
-                <li>Vinicius de Almeida</li>
+                <li>Felipe Santos: 31386334</li>
+                <li>Adilson Lopes: 29881510</li>
+                <li>Addan Reis: 31385252</li>
+                <li>Vinicius de Almeida: 29346487</li>
             </ul>
             <app-button name="Fechar" (click)="closeModal()" class="close"></app-button>
         </div>
@@ -60,9 +61,12 @@
         <div class="modal-content mr">
             <h2>Regras do Jogo</h2>
             <div class="card">
+                <p>No jogo "<b>Travessia da Sorte</b>", o objetivo é alcançar 100 pontos, usando principalmente a sorte e a estratégia para aproveitar os benefícios que as diferentes casas do tabuleiro podem oferecer. A cada rodada, os jogadores avançam com base no resultado de um dado.</p>
+            </div>
+            <div class="card">
                 <img src="imgs/rules/chegada.png" alt="Linha de chegada">
                 <h3>Linha de chegada</h3>
-                <p>Sinaliza o inicio e o final do jogo. Quem conseguir 100 pontos primeiro será o vencedor! Cada vez que um jogador cruzar esta carta ele ganha um multiplicador de pontos.</p>
+                <p>Sinaliza o inicio do jogo e consede ao jogador, cada vez que cruzar esta carta, um multiplicador de pontos.</p>
             </div>
             <div class="card">
                 <img src="imgs/rules/sorte.png" alt="Carta da sorte">
