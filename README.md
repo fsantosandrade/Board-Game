@@ -31,7 +31,8 @@ Acesse o repositório completo no GitHub!: [Travessia da Sorte](https://github.c
 
 ## 🔎 Como Acessar
 
-Acesse o link do site disponibilizado a partir do GitHub Pages aqui: [https://fsantosandrade.github.io/Board-Game/](https://fsantosandrade.github.io/Board-Game/)
+- Acesse o link do site disponibilizado a partir do GitHub Pages aqui: [https://fsantosandrade.github.io/Board-Game/](https://fsantosandrade.github.io/Board-Game/)
+- Acesse o link do relatório explicativo aqui: [https://docs.google.com/document/d/1iEnty6GXGWicofXEbz9FQG8m6Ii5amr6lVKyQKcuaRo/edit?usp=sharing](https://docs.google.com/document/d/1iEnty6GXGWicofXEbz9FQG8m6Ii5amr6lVKyQKcuaRo/edit?usp=sharing)
 
 ## 🛣️ Como Executar o Projeto
 
